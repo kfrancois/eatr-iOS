@@ -1,14 +1,6 @@
-//
-//  FirstViewController.swift
-//  Eatr
-//
-//  Created by Koen on 21/12/2017.
-//  Copyright © 2017 Koen. All rights reserved.
-//
-
 import UIKit
 
-class FirstViewController: UIViewController {
+class MainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

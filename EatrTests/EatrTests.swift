@@ -1,11 +1,3 @@
-//
-//  EatrTests.swift
-//  EatrTests
-//
-//  Created by Koen on 21/12/2017.
-//  Copyright © 2017 Koen. All rights reserved.
-//
-
 import XCTest
 @testable import Eatr
 
