@@ -20,6 +20,8 @@
 		5DD3F8B91FEC6A9900489C96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DD3F8B81FEC6A9900489C96 /* Assets.xcassets */; };
 		5DD3F8BC1FEC6A9900489C96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DD3F8BA1FEC6A9900489C96 /* LaunchScreen.storyboard */; };
 		5DD3F8C71FEC6A9900489C96 /* EatrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD3F8C61FEC6A9900489C96 /* EatrTests.swift */; };
+		5DFD99831FF41CE200BFBC3B /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFD99821FF41CE200BFBC3B /* RecipeService.swift */; };
+		5DFD99871FF4209800BFBC3B /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFD99861FF4209800BFBC3B /* RecipeCell.swift */; };
 		A2FFC8DE2561DF5B40BFCF52 /* Pods_Eatr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8689A40C7065445FD01BDE99 /* Pods_Eatr.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		5DD3F8C21FEC6A9900489C96 /* EatrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EatrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DD3F8C61FEC6A9900489C96 /* EatrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatrTests.swift; sourceTree = "<group>"; };
 		5DD3F8C81FEC6A9900489C96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DFD99821FF41CE200BFBC3B /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
+		5DFD99861FF4209800BFBC3B /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		8689A40C7065445FD01BDE99 /* Pods_Eatr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eatr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8ACF322B176EE1DFF0BAB77 /* Pods-Eatr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eatr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eatr/Pods-Eatr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +84,7 @@
 			children = (
 				5D4F1D791FF28C4B0034FD19 /* UserService.swift */,
 				5D0F034D1FF32B4800371F3C /* TokenService.swift */,
+				5DFD99821FF41CE200BFBC3B /* RecipeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 		5DD3F8AE1FEC6A9800489C96 /* Eatr */ = {
 			isa = PBXGroup;
 			children = (
+				5DFD99841FF4208B00BFBC3B /* Views */,
 				5D4F1D7C1FF28CBC0034FD19 /* Models */,
 				5D4F1D781FF28C3E0034FD19 /* Services */,
 				5D4F1D7B1FF28C710034FD19 /* ViewControllers */,
@@ -146,6 +152,14 @@
 				5DD3F8C81FEC6A9900489C96 /* Info.plist */,
 			);
 			path = EatrTests;
+			sourceTree = "<group>";
+		};
+		5DFD99841FF4208B00BFBC3B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5DFD99861FF4209800BFBC3B /* RecipeCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		716A98743ABC7B779F06FEEF /* Frameworks */ = {
@@ -276,11 +290,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Eatr/Pods-Eatr-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -333,7 +349,9 @@
 				5D4F1D801FF28CDB0034FD19 /* Ingredient.swift in Sources */,
 				5DD3F8B21FEC6A9800489C96 /* MainViewController.swift in Sources */,
 				5D4F1D7A1FF28C4B0034FD19 /* UserService.swift in Sources */,
+				5DFD99871FF4209800BFBC3B /* RecipeCell.swift in Sources */,
 				5D4F1D7E1FF28CD30034FD19 /* Recipe.swift in Sources */,
+				5DFD99831FF41CE200BFBC3B /* RecipeService.swift in Sources */,
 				5D0F03501FF332CB00371F3C /* FollowingViewController.swift in Sources */,
 				5D0F034E1FF32B4800371F3C /* TokenService.swift in Sources */,
 			);

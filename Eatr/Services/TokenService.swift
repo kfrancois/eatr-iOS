@@ -10,10 +10,16 @@ struct TokenService {
         defaults.set(username, forKey: "username")
     }
     
-    static func getToken(for username: String) -> String? {
-        return keychain[username]
+    static var token: String? {
+        get {
+            if(username == nil) {
+                // do something
+                return ""
+            } else {
+                return keychain[username!]
+            }
+        }
     }
-    
     
     static var username: String? {
         get {
