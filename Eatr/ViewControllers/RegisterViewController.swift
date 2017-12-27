@@ -30,6 +30,15 @@ class RegisterViewController: UIViewController {
             else {
                 //TODO register
                 self.statusLabel.text = "Registering..."
+                
+                UserService.register(username: self.usernameField.text!, password: self.passwordField.text!,
+                                     completion: { registerResult in
+                    if registerResult! {
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                        self.present(mainViewController, animated: true, completion: nil)
+                    }
+                })
             }
         })
     }

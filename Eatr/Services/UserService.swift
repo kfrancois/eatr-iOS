@@ -31,7 +31,52 @@ enum UserService {
             } else {
                 completion(false)
             }
-            
         }
     }
+    
+    static func register(username: String, password: String, completion: @escaping (Bool?) -> Void) {
+        let url = URL(string: "\(baseUrl)/register")!
+        
+        let data = [
+            "username": username,
+            "password": password
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: data).responseJSON { (response) -> Void in
+            guard response.result.isSuccess else {
+                print("Error during request: \(String(describing: response.result.error))")
+                completion(false)
+                return
+            }
+            
+            let json = response.result.value as! NSDictionary
+            TokenService.save(token: json["token"] as! String, for: username)
+            
+            completion(true)
+        }
+    }
+    
+    static func login(username: String, password: String, completion: @escaping (Bool?) -> Void) {
+        let url = URL(string: "\(baseUrl)/login")!
+        
+        let data = [
+            "username": username,
+            "password": password
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: data).responseJSON { (response) -> Void in
+            guard response.result.isSuccess else {
+                print("Error during request: \(String(describing: response.result.error))")
+                completion(false)
+                return
+            }
+            
+            let json = response.result.value as! NSDictionary
+            TokenService.save(token: json["token"] as! String, for: username)
+            
+            completion(true)
+        }
+    }
+    
+    
 }

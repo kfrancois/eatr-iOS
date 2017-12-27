@@ -7,8 +7,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
 
     @IBAction func login() {
-        UserService.isAvailable(username: usernameField.text!, completion: { result in
-            self.passwordField.text = (result)! ? "success" : "fail"
+        UserService.login(username: usernameField.text!, password: passwordField.text!, completion: { result in
+            if result! {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                self.present(mainViewController, animated: true, completion: nil)
+            }
         })
     }
 
