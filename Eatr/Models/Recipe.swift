@@ -24,8 +24,9 @@ extension Recipe {
         let description = json["description"].stringValue
         let time = json["time"].stringValue
         let steps = json["steps"].arrayValue.map { $0.stringValue }
+        let ingredients = [Ingredient.fromJSON(json: json), Ingredient.fromJSON(json: json)]
         // TODO add ingredients from json
         
-        return Recipe(id: id, name: name, people: people, category: category, image: image, description: description, time: time, steps: steps, ingredients: [])
+        return Recipe(id: id, name: name, people: people, category: category, image: image, description: description, time: time, steps: steps, ingredients: ingredients)
     }
 }

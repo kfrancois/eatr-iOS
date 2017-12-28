@@ -7,11 +7,27 @@ class FollowingViewController: UIViewController {
     var recipes: [Recipe] = []
     
     override func viewDidLoad() {
+        refreshTable()
+        // splitViewController!.delegate = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch  segue.identifier {
+        case "showRecipe"?:
+            let recipeViewController = (segue.destination as! UINavigationController).topViewController as! RecipeViewController
+            let selection = tableView.indexPathForSelectedRow!
+            recipeViewController.recipe = recipes[selection.row]
+            tableView.deselectRow(at: selection, animated: true)
+        default:
+            fatalError("Unknown segue")
+        }
+    }
+    
+    @IBAction func refreshTable() {
         RecipeService.subscribedRecipes { completion in
             self.recipes = completion != nil ? completion! : []
             self.tableView.reloadData()
         }
-        // splitViewController!.delegate = self
     }
 }
 
@@ -31,14 +47,3 @@ extension FollowingViewController: UITableViewDataSource {
         return cell
     }
 }
-
-/*
-extension FollowingViewController: UISplitViewControllerDelegate {
-    func collapseSecondaryViewController(_ secondaryViewController: UIViewController, for splitViewController: UISplitViewController) -> Bool {
-        let isShowingTasks = (secondaryViewController as! UINavigationController).topViewController is TasksViewController
-        
-        // if task is shown: dont collapse
-        return !isShowingTasks
-    }
-}
-*/
