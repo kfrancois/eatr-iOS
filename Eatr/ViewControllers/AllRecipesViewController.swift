@@ -1,14 +1,13 @@
 import UIKit
 
-class FollowingViewController: UIViewController {
+class AllRecipesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-
+    
     var recipes: [Recipe] = []
     
     override func viewDidLoad() {
         refreshTable()
-        // splitViewController!.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -24,14 +23,14 @@ class FollowingViewController: UIViewController {
     }
     
     @IBAction func refreshTable() {
-        RecipeService.subscribedRecipes { completion in
+        RecipeService.allRecipes { completion in
             self.recipes = completion != nil ? completion! : []
             self.tableView.reloadData()
         }
     }
 }
 
-extension FollowingViewController: UITableViewDataSource {
+extension AllRecipesViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -47,3 +46,4 @@ extension FollowingViewController: UITableViewDataSource {
         return cell
     }
 }
+
