@@ -96,4 +96,36 @@ enum RecipeService {
             completion(recipes)
         }
     }
+
+    static func ownRecipes(completion: @escaping ([Recipe]?) -> Void) {
+        
+        let url = URL(string: "\(baseUrl)/recipes")!
+        
+        guard TokenService.token != nil else {
+            print("Error during request: No token")
+            completion(nil)
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(TokenService.token!)",
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(url, method: .get, headers: headers).responseData { (response) -> Void in
+            guard response.result.isSuccess else {
+                print("Error during request: \(String(describing: response.result.error))")
+                
+                completion(nil)
+                return
+            }
+            
+            let json = JSON(response.result.value!)
+            
+            let recipes = json.map { Recipe.fromJSON(json: $1) }
+            
+            completion(recipes)
+        }
+        
+    }
 }

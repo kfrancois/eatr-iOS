@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Eatr/Services/RecipeService.swift"
-            timestampString = "536262074.100584"
+            timestampString = "536600614.55859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "subscribedRecipes(completion:)"
+            landmarkName = "recipe(id:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

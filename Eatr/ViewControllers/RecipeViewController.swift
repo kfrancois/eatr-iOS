@@ -43,13 +43,16 @@ class RecipeViewController: UIViewController {
 
         
         
-        people.text = "\(recipe.people) people"
+        people.text = "\(recipe.people) \(recipe.people.intValue > 1 ? "people" : "person")"
         time.text = recipe.time
         descr.text = recipe.description
         
         var text = ""
-        
-        recipe.steps.forEach { text += "\($0)\n\n" }
+        var i = 1
+        for step in recipe.steps {
+            text += "\(i)\n\(step)\n\n"
+            i += 1
+        }
         
         stepsContainer.text = text
     }
