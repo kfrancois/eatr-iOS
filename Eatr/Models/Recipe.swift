@@ -11,7 +11,7 @@ struct Recipe {
     let description: String
     let time: String
     let steps: [String]
-    let ingredients: [Ingredient]
+    var ingredients: [Ingredient]
 }
 
 extension Recipe {

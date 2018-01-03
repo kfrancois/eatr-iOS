@@ -4,6 +4,5 @@ target 'Eatr' do
   use_frameworks!
   pod 'Alamofire', '~> 4.5'
   pod 'KeychainAccess', '~> 3.1'
-  pod 'RealmSwift'
-  pod 'SwiftyJSON'
+  pod 'SwiftyJSON', '~> 4.0'
 end

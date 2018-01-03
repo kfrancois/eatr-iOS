@@ -584,12 +584,19 @@
                                 <action selector="back" destination="5Yr-G2-5Aq" id="Akh-IX-cPw"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Deselect" id="KdN-EV-d0q">
+                            <connections>
+                                <action selector="deselect" destination="5Yr-G2-5Aq" id="bk0-Ld-Os0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pdh-te-600" id="a0F-bR-Q8j"/>
+                        <segue destination="gPh-dJ-fT9" kind="unwind" identifier="didEditIngredients" unwindAction="unwindFromIngredients:" id="t5t-yG-xgB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71q-wE-W01" sceneMemberID="firstResponder"/>
+                <exit id="gPh-dJ-fT9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1496" y="2596"/>
         </scene>

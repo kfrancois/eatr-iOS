@@ -31,8 +31,6 @@ class RecipeViewController: UIViewController {
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         let image = UIImage(data: recipe.image)
         imageView.image = image
-
-        
         
         let height = (imageView.frame.width / (image?.size.width)!) * (image?.size.height)!
         
@@ -40,12 +38,18 @@ class RecipeViewController: UIViewController {
         let imageViewWidthConstraint = NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (image?.size.width)!)
         let imageViewHeightConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height)
         imageView.addConstraints([imageViewWidthConstraint, imageViewHeightConstraint])
-
-        
         
         people.text = "\(recipe.people) \(recipe.people.intValue > 1 ? "people" : "person")"
         time.text = recipe.time
         descr.text = recipe.description
+        
+        let savedIngredients = UserDefaults.standard.array(forKey: recipe.id)
+        if savedIngredients != nil {
+            for i in 0..<recipe.ingredients.count {
+                let checked = savedIngredients![i] as! Bool
+                recipe.ingredients[i].checked = checked
+            }
+        }
         
         var text = ""
         var i = 1
@@ -61,9 +65,20 @@ class RecipeViewController: UIViewController {
         switch  segue.identifier {
         case "showIngredients"?:
             let ingredientsViewController = (segue.destination as! UINavigationController).topViewController as! IngredientsViewController
+            ingredientsViewController.recipeId = recipe.id
             ingredientsViewController.ingredients = recipe.ingredients
         default:
             fatalError("Unknown segue")
+        }
+    }
+    
+    @IBAction func unwindFromIngredients(_ segue: UIStoryboardSegue) {
+        switch segue.identifier {
+        case "didEditIngredients"?:
+            let ingredientsViewController = segue.source as! IngredientsViewController
+            self.recipe.ingredients = ingredientsViewController.ingredients
+        default:
+            fatalError("Unkown segue")
         }
     }
 

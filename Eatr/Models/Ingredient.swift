@@ -5,6 +5,7 @@ struct Ingredient {
     let name: String
     let amount: NSInteger
     let unit: String
+    var checked: Bool
 }
 
 extension Ingredient {
@@ -13,6 +14,6 @@ extension Ingredient {
         let amount = json["amount"].intValue
         let unit = json["unit"].stringValue
         
-        return Ingredient(name: name, amount: amount, unit: unit)
+        return Ingredient(name: name, amount: amount, unit: unit, checked: false)
     }
 }
